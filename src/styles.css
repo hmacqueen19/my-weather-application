@@ -8,6 +8,8 @@ h1 {
   color: #fecea8;
   padding: 40px;
 }
+.search-form {
+}
 .daily-weather {
   text-align: center;
   padding: 30px;
@@ -16,6 +18,11 @@ h1 {
 }
 .current-weather {
   padding: 30px;
+  margin: 30px;
 }
 .col-md-2 {
+}
+
+.blanket-information {
+  margin: 30px;
 }
