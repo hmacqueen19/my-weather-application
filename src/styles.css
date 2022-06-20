@@ -4,7 +4,10 @@ body {
 .daily-weather {
   text-align: center;
   padding: 30px;
+  margin: 0px;
 }
 .current-weather {
   padding: 30px;
+}
+.col-md-2 {
 }
