@@ -1,0 +1,10 @@
+body {
+  font-family: sans-serif;
+}
+.daily-weather {
+  text-align: center;
+  padding: 30px;
+}
+.current-weather {
+  padding: 30px;
+}
