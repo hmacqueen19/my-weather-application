@@ -21,6 +21,8 @@ h1 {
   margin: 30px;
 }
 .col-md-2 {
+  margin: 0 auto;
+  width: 19%;
 }
 
 .blanket-information {
