@@ -95,6 +95,7 @@
                 </div>
             </div> 
         </div>
+       <a href="https://github.com/hmacqueen19/my-weather-application">Open-source code by Helen Macqueen</a>
        <script src="src/index.js"></script>  
   </body>
 </html>
