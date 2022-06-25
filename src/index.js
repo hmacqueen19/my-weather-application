@@ -97,3 +97,4 @@ searchForm.addEventListener("submit", search);
 // }
 // let fahrenheitTemperature = document.querySelector("#fahrenheit");
 // fahrenheitTemperature.addEventListener("click", showFahrenheit);
+getTemperature("Fairfax");
