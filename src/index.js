@@ -14,7 +14,13 @@ function getTodaysFormattedDate() {
   let today = new Date();
   let currentDay = dayWords[today.getDay()];
   let currentHour = today.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
   let currentMinute = today.getMinutes();
+  if (currentMinute < 10) {
+    currentMinute = `0${currentMinute}`;
+  }
 
   return `${currentDay} ${currentHour}:${currentMinute}`;
 }
@@ -26,6 +32,18 @@ function displayCityAndTemperature(response) {
   // let searchInput = document.querySelector("#location-bar");
   let cityName = document.querySelector("#current-location");
   cityName.innerHTML = response.data.name;
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = response.data.main.humidity;
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = Math.round(response.data.main.wind.speed);
+  let description = document.querySelector("#description");
+  description.innerHTML = response.datra.weather[0].description;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 function getTemperature(cityName) {
   let apiKey = "6235b58538eef339ac44773d06f22df9";

@@ -20,6 +20,13 @@ li {
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
+  border: 1px;
+}
+.overview {
+  text-align: left;
+}
+.weather-temperature {
+  text-align: left;
 }
 .location-bar {
   width: 100%;
