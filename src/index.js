@@ -24,20 +24,24 @@ function getTodaysFormattedDate() {
 
   return `${currentDay} ${currentHour}:${currentMinute}`;
 }
+
 function displayCityAndTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureCurrent = document.querySelector("#temperature-current");
   temperatureCurrent.innerHTML = temperature;
+
+  celsiusTemperature = response.data.main.temp;
+
   // Set the targets innerHTML
   // let searchInput = document.querySelector("#location-bar");
   let cityName = document.querySelector("#current-location");
   cityName.innerHTML = response.data.name;
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = response.data.main.humidity;
+  humidity.innerHTML = `${response.data.main.humidity}%`;
   let wind = document.querySelector("#wind");
-  wind.innerHTML = Math.round(response.data.main.wind.speed);
+  wind.innerHTML = Math.round(response.data.wind.speed) + " km/h";
   let description = document.querySelector("#description");
-  description.innerHTML = response.datra.weather[0].description;
+  description.innerHTML = response.data.weather[0].description;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -45,6 +49,7 @@ function displayCityAndTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+
 function getTemperature(cityName) {
   let apiKey = "6235b58538eef339ac44773d06f22df9";
   let units = "metric";
@@ -95,24 +100,33 @@ function search(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-// /**
-//  * Change temperature to celsius
-//  */
-// function showCelsius(event) {
-//   event.preventDefault();
-//   let celsius = document.querySelector("#temperature-current");
-//   celsius.innerHTML = "23";
-// }
-// let celsiusTemperature = document.querySelector("#celsius");
-// celsiusTemperature.addEventListener("click", showCelsius);
-// /**
-//  * Change temperature to Fahrenheit
-//  */
-// function showFahrenheit(event) {
-//   event.preventDefault();
-//   let fahrenheit = document.querySelector("#temperature-current");
-//   fahrenheit.innerHTML = "81";
-// }
-// let fahrenheitTemperature = document.querySelector("#fahrenheit");
-// fahrenheitTemperature.addEventListener("click", showFahrenheit);
+/**
+ * Change temperature to Fahrenheit
+ */
+function showFahrenheit(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature-current");
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperature.innerHTML = Math.round(fahrenheitTemperature);
+}
+/**
+ * Change temperature to celsius
+ */
+function showCelsius(event) {
+  event.preventDefault();
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  let temperature = document.querySelector("#temperature-current");
+  temperature.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusTemperature = null;
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", showCelsius);
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", showFahrenheit);
+
 getTemperature("Fairfax");
