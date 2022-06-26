@@ -1,12 +1,21 @@
 body {
   font-family: sans-serif;
-  background-color: #45171d;
+  background: radial-gradient(
+    circle at 7.5% 24%,
+    rgb(237, 161, 193) 0%,
+    rgb(250, 178, 172) 25.5%,
+    rgb(190, 228, 210) 62.3%,
+    rgb(215, 248, 247) 93.8%
+  );
 }
 h1 {
   text-align: center;
   font-size: 60px;
-  color: #fecea8;
+  color: black;
   padding: 40px;
+}
+h2 {
+  font-size: 60px;
 }
 ul {
   margin: 0;
@@ -17,8 +26,11 @@ li {
   margin: 0;
   padding: 0;
 }
+li:first-letter {
+  text-transform: capitalize;
+}
 .weather-app-wrapper {
-  max-width: 600px;
+  max-width: 800px;
   margin: 30px auto;
   border: 1px;
 }
@@ -28,14 +40,29 @@ li {
 .weather-temperature {
   text-align: left;
 }
+
+.temperature-current {
+  padding-top: 0;
+  margin: 0 auto;
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
 .location-bar {
   width: 100%;
+  border-radius: 30px;
 }
 .search-button {
   width: 100%;
+  background-color: rgb(237, 161, 193);
+  border-radius: 30px;
+  box-shadow: 5px, 5px, 5px rgba(0, 0, 0, 0.5);
 }
-.submit-button {
+
+.current-location {
   width: 100%;
+  background-color: rgb(237, 161, 193);
+  border-radius: 30px;
 }
 .daily-weather {
   text-align: center;
@@ -53,8 +80,37 @@ li {
   width: 19%;
   text-align: center;
 }
-
 .blanket-information {
   margin: 30px;
   text-align: center;
+}
+.units {
+  font-size: 15px;
+  position: relative;
+  top: -18px;
+}
+.units .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.units .active:hover {
+  text-decoration: none;
+}
+#temperature-information {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 50px;
+}
+#last-updated,
+#description {
+  font-size: 13px;
+}
+#humidity-wind {
+  padding-top: 30px;
+}
+#icon {
+  margin-right: 5px;
+  height: 100px;
+  width: 100px;
 }

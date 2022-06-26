@@ -45,15 +45,15 @@
                         <div class="overview">
                             <h2 id="current-location" class="card-title"></h5>
                             <ul>
-                                <li>Last updated: <span id="current-date"></span></li>
+                                <li id="last-updated">Last updated: <span id="current-date"></span></li>
                                 <li id="description"></li>
                             </ul> 
                         </div>
                         <div class="row">
-                            <div class=""col-6>
+                            <div class="col-6">
                                 <div class="clearfix weather-temperature">
-                                    <img src="" alt="clear" id="icon" class="float-left"/>
-                                    <div class="float-left">
+                                    <img src="" alt="clear" id="icon"/>
+                                    <div id="temperature-information">
                                         <strong id="temperature-current"></strong>
                                         <span class="units">
                                             <a href="#" id="celsius" class="active">°C</a> |
@@ -61,13 +61,13 @@
                                         </span>
                                     </div>    
                                 </div>
-                                <div class="col-6">
-                                    <ul>
-                                        <li>Humidity: <span id="humidity">%</span>
-                                        </li>
-                                        <li>Wind: <span id="wind">km/h</span></li>
-                                    </ul>
-                                </div>
+                            </div>    
+                            <div class="col-6" id="humidity-wind">
+                                <ul>
+                                    <li>Humidity: <span id="humidity">%</span>
+                                    </li>
+                                    <li>Wind: <span id="wind">km/h</span></li>
+                                </ul>
                             </div>
                         </div>    
                     </div>
