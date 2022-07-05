@@ -25,14 +25,57 @@ function getTodaysFormattedDate() {
   return `${currentDay} ${currentHour}:${currentMinute}`;
 }
 
+function getYarnColorName(temperature) {
+  /**
+   * This function takes the determined temperature and determines which yarn color it corresponds to.
+   *
+   * @param: temperature the temperature as a number, this only expects fahrenheit temperatures
+   *
+   * @returns: string representation of a color name
+   */
+
+  if (15 <= temperature && temperature <= 24) {
+    return "White";
+  }
+  if (25 <= temperature && temperature <= 33) {
+    return "Vapor Gray";
+  }
+  if (34 <= temperature && temperature <= 42) {
+    return "Smokey Green";
+  }
+  if (43 <= temperature && temperature <= 51) {
+    return "Smokey Blue";
+  }
+  if (52 <= temperature && temperature <= 60) {
+    return "Indigo";
+  }
+  if (61 <= temperature && temperature <= 69) {
+    return "Jewel Blue";
+  }
+  if (70 <= temperature && temperature <= 78) {
+    return "Gray Orchid";
+  }
+  if (79 <= temperature && temperature <= 87) {
+    return "Blush Pink";
+  }
+  if (88 <= temperature && temperature <= 96) {
+    return "Pomegranite";
+  }
+  if (97 <= temperature && temperature <= 105) {
+    return "Soft Sunshine";
+  }
+}
+
 function displayCityAndTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureCurrent = document.querySelector("#temperature-current");
   temperatureCurrent.innerHTML = temperature;
 
-  fahrenheitTemperature = response.data.main.temp;
+  fahrenheitTemperature = Math.round(response.data.main.temp);
   celsiusTemperature = Math.round((fahrenheitTemperature - 32) * 5) / 9;
 
+  let yarnColorElement = document.querySelector("#yarn-color");
+  yarnColorElement.innerHTML = getYarnColorName(temperature);
   // Set the targets innerHTML
   // let searchInput = document.querySelector("#location-bar");
   let cityName = document.querySelector("#current-location");
@@ -54,15 +97,7 @@ function displayCityAndTemperature(response) {
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return days[day];
 }
@@ -90,9 +125,9 @@ function displayForecast(response) {
                   />
               </div>
               <div class="forecast-temperatures">
-                  <span class="forecast-temperature-maximum"> ${Math.round(
+                  <span class="forecast-temperature-maximum"><strong>${Math.round(
                     forecastDay.temp.max
-                  )}°</span>
+                  )}</strong>°</span>
                   <span class="forecast-temperature-minimum"> ${Math.round(
                     forecastDay.temp.min
                   )}°</span>
@@ -180,6 +215,7 @@ function showCelsius(event) {
   let temperature = document.querySelector("#temperature-current");
   temperature.innerHTML = Math.round(celsiusTemperature);
 }
+function showYarnColor(event) {}
 let celsiusTemperature = null;
 let fahrenheitTemperature = null;
 

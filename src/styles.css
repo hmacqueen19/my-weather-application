@@ -58,7 +58,9 @@ li:first-letter {
   border-radius: 30px;
   box-shadow: 5px, 5px, 5px rgba(0, 0, 0, 0.5);
 }
-
+.weather-forecast-date {
+  font-size: 20px;
+}
 .current-location {
   width: 100%;
   background-color: rgb(237, 161, 193);
@@ -72,16 +74,16 @@ li:first-letter {
 }
 .current-weather {
   padding: 30px;
-  margin: 30px;
+  margin: 15px;
   text-align: center;
 }
 .col-md-2 {
   margin: 0 auto;
-  width: 19%;
+
   text-align: center;
 }
 .blanket-information {
-  margin: 30px;
+  margin: 15px;
   text-align: center;
 }
 .units {
