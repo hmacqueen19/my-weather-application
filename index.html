@@ -17,7 +17,9 @@
     <title>Weather App</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
    
 </head>
   <body>
@@ -31,17 +33,17 @@
                             <input id="location-bar" class="location-bar" type="text" placeholder="Enter your location">
                         </div>
                         <div class="col-3">
-                            <input id="search-button" class="search-button" type="submit" value="Search">
+                            <input id="search-button" class="search-button shadow" type="submit" value="Search">
                         </div>
                         <div class="col-3">
-                            <input id="submit-button" class="current-location" type="submit" value="Current Location">
+                            <input id="submit-button" class="current-location shadow" type="submit" value="Current Location">
                         </div>    
                     </div>
                 </form>    
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="card current-weather">
+                    <div class="card current-weather" style="border: 2px solid black">
                         <div class="overview">
                             <h2 id="current-location" class="card-title"></h5>
                             <ul>
@@ -74,7 +76,7 @@
                 </div>
             <div class="weather-forecast" id="forecast"></div>
             <div class="col-12">
-                <div class="card blanket-information">
+                <div class="card blanket-information" style="border: 2px solid black">
                     <div class="card-body">
                         <h3 id="yarn-card-title">Bernat Velvet Yarn Color: </h2>
                         <h5 id="yarn-color">Yarn Color and Range</h5>

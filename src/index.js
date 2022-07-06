@@ -94,6 +94,11 @@ function displayCityAndTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   getForecast(response.data.coord);
 }
+
+function getForecastWeather(response) {}
+
+getForecastWeather();
+
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -109,10 +114,15 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
+      forecastTemps[index] = {
+        min: response.data.daily[index].temp.min,
+        max: response.data.daily[index].temp.max,
+      };
+
       forecastHTML =
         forecastHTML +
         `<div class="col-md-2">
-          <div class="card daily-forecast">
+          <div class="card daily-forecast" style="border: 2px solid black">
               <div class="card-body">
                   <div class="weather-forecast-date">${formatDay(
                     forecastDay.dt
@@ -125,12 +135,16 @@ function displayForecast(response) {
                   />
               </div>
               <div class="forecast-temperatures">
-                  <span class="forecast-temperature-maximum"><strong>${Math.round(
-                    forecastDay.temp.max
-                  )}</strong>°</span>
-                  <span class="forecast-temperature-minimum"> ${Math.round(
-                    forecastDay.temp.min
-                  )}°</span>
+                  <span id="${[
+                    index.max.temp,
+                  ]}" class="forecast-temperature-maximum"><strong>${Math.round(
+          forecastDay.temp.max
+        )}</strong>°</span>
+                  <span id="${
+                    index.min.temp
+                  }" class="forecast-temperature-minimum"> ${Math.round(
+          forecastDay.temp.min
+        )}°</span>
               </div>
           </div>
       </div>`;
@@ -224,5 +238,29 @@ celsius.addEventListener("click", showCelsius);
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", showFahrenheit);
+
+// store forecast temperature data
+let forecastTemps = new Array(5);
+// let forecastDayOneMax = null;
+// let forecastDayOneMin = null;
+// let forecastDayTwoMax = null;
+// let forecastDayTwoMin = null;
+// let forecastDayThreeMax = null;
+// let forecastDayThreeMin = null;
+// let forecastDayFourMax = null;
+// let forecastDayFourMin = null;
+// let forecastDayFiveMax = null;
+// let forecastDayFiveMin = null;
+// let forecastDayOneMax = response.data.daily[0].temp.max;
+// let forecastDayOneMin = response.data.daily[0].temp.min;
+// let forecastDayTwoMax = response.data.daily[1].temp.max;
+// let forecastDayTwoMin = response.data.daily[1].temp.min;
+// let forecastDayThreeMax = response.data.daily[2].temp.max;
+// let forecastDayThreeMin = response.data.daily[2].temp.min;
+// let forecastDayFourMax = response.data.daily[3].temp.max;
+// let forecastDayFourMin = response.data.daily[3].temp.min;
+// let forecastDayFiveMax = response.data.daily[4].temp.max;
+// let forecastDayFiveMin = response.data.daily[4].temp.min;
+//
 
 getTemperature("Fairfax");
