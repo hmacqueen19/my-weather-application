@@ -113,10 +113,10 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (0 < index && index < 6) {
       forecastTemps[index] = {
-        min: response.data.daily[index].temp.min,
-        max: response.data.daily[index].temp.max,
+        min: Math.round(forecastDay.temp.min),
+        max: Math.round(forecastDay.temp.max),
       };
 
       forecastHTML =
@@ -135,16 +135,12 @@ function displayForecast(response) {
                   />
               </div>
               <div class="forecast-temperatures">
-                  <span id="${[
-                    index.max.temp,
-                  ]}" class="forecast-temperature-maximum"><strong>${Math.round(
-          forecastDay.temp.max
-        )}</strong>°</span>
-                  <span id="${
-                    index.min.temp
-                  }" class="forecast-temperature-minimum"> ${Math.round(
-          forecastDay.temp.min
-        )}°</span>
+                  <span class="forecast-temperature-maximum"><strong id="forecast-temperature-maximum-${index}">${
+          forecastTemps[index].max
+        }</strong>°</span>
+                  <span id="forecast-temperature-minimum-${index}" class="forecast-temperature-minimum"> ${
+          forecastTemps[index].min
+        }°</span>
               </div>
           </div>
       </div>`;
@@ -218,6 +214,20 @@ function showFahrenheit(event) {
   celsius.classList.remove("active");
   fahrenheit.classList.add("active");
   temperature.innerHTML = Math.round(fahrenheitTemperature);
+  forecastTemps.forEach(function (dayTemps, index) {
+    if (index > 0) {
+      let forecastTempsMax = document.querySelector(
+        `#forecast-temperature-maximum-${index}`
+      );
+      forecastTemps[index].max = Math.round(dayTemps.max * (9 / 5) + 32);
+      forecastTempsMax.innerHTML = forecastTemps[index].max;
+      let forecastTempsMin = document.querySelector(
+        `#forecast-temperature-minimum-${index}`
+      );
+      forecastTemps[index].min = Math.round(dayTemps.min * (9 / 5) + 32);
+      forecastTempsMin.innerHTML = forecastTemps[index].min + "°";
+    }
+  });
 }
 /**
  * Change temperature to celsius
@@ -228,6 +238,20 @@ function showCelsius(event) {
   fahrenheit.classList.remove("active");
   let temperature = document.querySelector("#temperature-current");
   temperature.innerHTML = Math.round(celsiusTemperature);
+  forecastTemps.forEach(function (dayTemps, index) {
+    if (index > 0) {
+      let forecastTempsMax = document.querySelector(
+        `#forecast-temperature-maximum-${index}`
+      );
+      forecastTemps[index].max = Math.round(((dayTemps.max - 32) * 5) / 9);
+      forecastTempsMax.innerHTML = forecastTemps[index].max;
+      let forecastTempsMin = document.querySelector(
+        `#forecast-temperature-minimum-${index}`
+      );
+      forecastTemps[index].min = Math.round(((dayTemps.min - 32) * 5) / 9);
+      forecastTempsMin.innerHTML = forecastTemps[index].min + "°";
+    }
+  });
 }
 function showYarnColor(event) {}
 let celsiusTemperature = null;
