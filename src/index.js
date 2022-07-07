@@ -131,13 +131,13 @@ function displayForecast(response) {
                     forecastDay.weather[0].icon
                   }@2x.png"
                   alt=""
-                  width="42"
+                  width="60"
                   />
               </div>
               <div class="forecast-temperatures">
                   <span class="forecast-temperature-maximum"><strong id="forecast-temperature-maximum-${index}">${
           forecastTemps[index].max
-        }</strong>°</span>
+        }</strong>° | </span>
                   <span id="forecast-temperature-minimum-${index}" class="forecast-temperature-minimum"> ${
           forecastTemps[index].min
         }°</span>
@@ -253,7 +253,7 @@ function showCelsius(event) {
     }
   });
 }
-function showYarnColor(event) {}
+
 let celsiusTemperature = null;
 let fahrenheitTemperature = null;
 
@@ -265,26 +265,5 @@ fahrenheit.addEventListener("click", showFahrenheit);
 
 // store forecast temperature data
 let forecastTemps = new Array(5);
-// let forecastDayOneMax = null;
-// let forecastDayOneMin = null;
-// let forecastDayTwoMax = null;
-// let forecastDayTwoMin = null;
-// let forecastDayThreeMax = null;
-// let forecastDayThreeMin = null;
-// let forecastDayFourMax = null;
-// let forecastDayFourMin = null;
-// let forecastDayFiveMax = null;
-// let forecastDayFiveMin = null;
-// let forecastDayOneMax = response.data.daily[0].temp.max;
-// let forecastDayOneMin = response.data.daily[0].temp.min;
-// let forecastDayTwoMax = response.data.daily[1].temp.max;
-// let forecastDayTwoMin = response.data.daily[1].temp.min;
-// let forecastDayThreeMax = response.data.daily[2].temp.max;
-// let forecastDayThreeMin = response.data.daily[2].temp.min;
-// let forecastDayFourMax = response.data.daily[3].temp.max;
-// let forecastDayFourMin = response.data.daily[3].temp.min;
-// let forecastDayFiveMax = response.data.daily[4].temp.max;
-// let forecastDayFiveMin = response.data.daily[4].temp.min;
-//
 
 getTemperature("Fairfax");
